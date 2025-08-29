@@ -24,64 +24,71 @@ function getHumanChoice(){
     return humanChoice
 }
 
-//Declaration of Score variable which will help in keeping track of scores through the game
-let humanScore = 0;
-let computerScore = 0;
+//This function calls playRound to run 5 times, keeps track of score and declare the winner in end.
+function playGame(){
+    //Declaration of Score variable which will help in keeping track of scores through the game
+    let humanScore = 0;
+    let computerScore = 0;
+    //This loop will invoke playRound function and the score keeping/incrementing five times
+    for(let i = 0; i<5; i++){
+    //This function takes human and computer's choice as argument and give the score of round and who won
+        function playRound(x, y){
+            if (x == y) {
+                return "It's a Draw!"
+            }
+            else if (x == "paper" && y == "rock") {
+                return "You Lose! Paper beats Rock."
+            }
+            else if (x == "scissor" && y == "paper") {
+                return "You Lose! Scissor beats Paper."
+            }
+            else if (x == "rock" && y == "scissor") {
+                return "You Lose! Rock beats Scissor."
+            }
+            else if (x == "rock" && y == "paper") {
+                return "You Win! Paper beats Rock."
+            }
+            else if (x == "paper" && y == "scissor") {
+                return "You Win! Scissor beats Paper."
+            }
+            else if (x == "scissor" && y == "rock") {
+                return "You Win! Rock beats Scissor."
+            }
+        }
 
-/*
-1. It take the value of human and computer
-2. It compare the value 
-3. Determine the winner based on rock, paper and scissor rules
-4. Give notification (One of these)
-    a. You Lose! Paper beats Rock
-    b. You Lose! Scissor beats Paper
-    c. You Lose! Rock beats Scissor
-    d. You Win! Paper beats Rock
-    e. You Win! Scissor beats Paper
-    f. You Win! Rock beats Scissor
-    g. It's a Draw!
-*/
-//This function takes human and computer's choice as argument and give the score of round and who won
-function playRound(x, y){
-    //Black Box
-    if (x == y) {
-        return "It's a Draw!"
+        //This lines give the values of getHumanChoice and getComputerChoice function and assign them to constants
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        //The assigned constants are passed as an argument of playRound function and the return value is stored in result constant
+        const result = playRound(computerSelection, humanSelection);
+
+        //Increment the score if someone wins
+        if (result.includes("Win")) {
+            humanScore = humanScore + 1
+        }
+        if (result.includes("Lose")){
+            computerScore = computerScore + 1
+        }
+
+        console.log(result)
+        console.log(`The scores are:- You:${humanScore}, Computer:${computerScore}`);
+        // console.log(computerScore);
+        // console.log(humanScore);
     }
-    else if (x == "paper" && y == "rock") {
-        return "You lose! Paper beats Rock."
+    if (humanScore > computerScore) {
+        console.log(`
+            You are the final WINNER!
+            Final Score:- You:${humanScore}, Computer:${computerScore}`);
     }
-    else if (x == "scissor" && y == "paper") {
-        return "You Lose! Scissor beats Paper."
+    else if (humanScore < computerScore) {
+        console.log(`
+            Computer is the final WINNER and You are LOSER!
+            Final Score:- You:${humanScore}, Computer:${computerScore}`);
     }
-    else if (x == "rock" && y == "scissor") {
-        return "You Lose! Rock beats Scissor."
-    }
-    else if (x == "rock" && y == "paper") {
-        return "You Win! Paper beats Rock."
-    }
-    else if (x == "paper" && y == "scissor") {
-        return "You Win! Scissor beats Paper."
-    }
-    else if (x == "scissor" && y == "rock") {
-        return "You Win! Rock beats Scissor."
+    else {
+        console.log("BAH! It was a draw.");
     }
 }
 
-//This lines give the values of getHumanChoice and getComputerChoice function and assign them to constants
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-//The assigned constants are passed as an argument of playRound function and the return value is stored in result constant
-const result = playRound(computerSelection, humanSelection);
-
-//Increment the score if someone wins
-if (result.includes("Win")) {
-    humanScore = humanScore + 1
-}
-if (result.includes("Lose")){
-    computerScore = computerScore + 1
-}
-
-console.log(result)
-console.log(humanScore)
-console.log(computerScore)
+playGame();
