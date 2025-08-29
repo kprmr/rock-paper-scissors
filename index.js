@@ -9,12 +9,12 @@ Good Luck`);
 function getComputerChoice(){
     let computerChoiceNumber = Math.floor(Math.random() * 3)
     if (computerChoiceNumber === 0) {
-        return "Rock"
+        return "Rock".toLowerCase()
     }
     else if (computerChoiceNumber === 1) {
-        return "Paper"
+        return "Paper".toLowerCase()
     }
-    else return "Scissor"
+    else return "Scissor".toLowerCase()
 }
 
 //This function return the human's choice of rock, paper or scissor
@@ -48,23 +48,40 @@ function playRound(x, y){
         return "It's a Draw!"
     }
     else if (x == "paper" && y == "rock") {
-        return "You lose! Paper beats Rock"
+        return "You lose! Paper beats Rock."
     }
     else if (x == "scissor" && y == "paper") {
-        return "You Lose! Scissor beats Paper"
+        return "You Lose! Scissor beats Paper."
     }
     else if (x == "rock" && y == "scissor") {
-        return "You Lose! Rock beats Scissor"
+        return "You Lose! Rock beats Scissor."
     }
     else if (x == "rock" && y == "paper") {
-        return "You Win! Paper beats Rock"
+        return "You Win! Paper beats Rock."
     }
     else if (x == "paper" && y == "scissor") {
-        return "You Win! Scissor beats Paper"
+        return "You Win! Scissor beats Paper."
     }
     else if (x == "scissor" && y == "rock") {
-        return "You Win! Rock beats scissor"
+        return "You Win! Rock beats Scissor."
     }
 }
 
+//This lines give the values of getHumanChoice and getComputerChoice function and assign them to constants
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
 
+//The assigned constants are passed as an argument of playRound function and the return value is stored in result constant
+const result = playRound(computerSelection, humanSelection);
+
+//Increment the score if someone wins
+if (result.includes("Win")) {
+    humanScore = humanScore + 1
+}
+if (result.includes("Lose")){
+    computerScore = computerScore + 1
+}
+
+console.log(result)
+console.log(humanScore)
+console.log(computerScore)
