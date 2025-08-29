@@ -19,16 +19,15 @@ step 2 make it so that 0 to 33 is rock, 33 to 66 is paper and 66 to 99 is scisso
 step 3 display the random string
 */
 function getComputerChoice(){
-    let computerChoiceNumber = Math.floor(Math.random() * 100) 
-    if (computerChoiceNumber <= 33 && computerChoiceNumber >= 0) {
+    let computerChoiceNumber = Math.floor(Math.random() * 3)
+    if (computerChoiceNumber === 0) {
         return "Rock"
     }
-    else if (computerChoiceNumber <= 66 && computerChoiceNumber > 33) {
+    else if (computerChoiceNumber === 1) {
         return "Paper"
     }
-    else if (computerChoiceNumber <= 99 && computerChoiceNumber > 66) {
-        return "Scissor"
-    }
+    else return "Scissor"
 }
+
 
 console.log(getComputerChoice())
