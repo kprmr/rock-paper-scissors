@@ -29,32 +29,34 @@ function playGame(){
     //Declaration of Score variable which will help in keeping track of scores through the game
     let humanScore = 0;
     let computerScore = 0;
+
+    //This function takes human and computer's choice as argument and give the score of round and who won
+    function playRound(x, y){
+        if (x == y) {
+            return "It's a Draw!"
+        }
+        else if (x == "paper" && y == "rock") {
+            return "You Lose! Paper beats Rock."
+        }
+        else if (x == "scissor" && y == "paper") {
+            return "You Lose! Scissor beats Paper."
+        }
+        else if (x == "rock" && y == "scissor") {
+            return "You Lose! Rock beats Scissor."
+        }
+        else if (x == "rock" && y == "paper") {
+            return "You Win! Paper beats Rock."
+        }
+        else if (x == "paper" && y == "scissor") {
+            return "You Win! Scissor beats Paper."
+        }
+        else if (x == "scissor" && y == "rock") {
+            return "You Win! Rock beats Scissor."
+        }
+    }
+
     //This loop will invoke playRound function and the score keeping/incrementing five times
     for(let i = 0; i<5; i++){
-    //This function takes human and computer's choice as argument and give the score of round and who won
-        function playRound(x, y){
-            if (x == y) {
-                return "It's a Draw!"
-            }
-            else if (x == "paper" && y == "rock") {
-                return "You Lose! Paper beats Rock."
-            }
-            else if (x == "scissor" && y == "paper") {
-                return "You Lose! Scissor beats Paper."
-            }
-            else if (x == "rock" && y == "scissor") {
-                return "You Lose! Rock beats Scissor."
-            }
-            else if (x == "rock" && y == "paper") {
-                return "You Win! Paper beats Rock."
-            }
-            else if (x == "paper" && y == "scissor") {
-                return "You Win! Scissor beats Paper."
-            }
-            else if (x == "scissor" && y == "rock") {
-                return "You Win! Rock beats Scissor."
-            }
-        }
 
         //This lines give the values of getHumanChoice and getComputerChoice function and assign them to constants
         const humanSelection = getHumanChoice();
