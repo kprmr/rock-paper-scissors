@@ -19,7 +19,8 @@ function getComputerChoice(){
 
 //This function return the human's choice of rock, paper or scissor
 function getHumanChoice(){
-    let humanChoicePrompt = prompt("What will you choose :- Rock, Paper or Scissor?")
+    let humanChoicePrompt = prompt(`What will you choose :- Rock, Paper or Scissor?
+And Please open the console window in developer tools`)
     let humanChoice = humanChoicePrompt.toLowerCase()
     return humanChoice
 }
