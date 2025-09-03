@@ -1,9 +1,4 @@
-console.log(`Welcome!
-Rules: 
-Please select one between 'Rock', 'Paper' and 'Scissor' and type in the alert box given.
-You can not enter anything other then the three choices mentioned.
-Good Luck`);
-// ---------------------------------------------------------------
+
 //The real coding start here
 
 //This function takes human's choice as argument and give the score of round and who won
@@ -51,7 +46,7 @@ const buttons = document.querySelectorAll('.btn');
 // Registering a click event in buttons and passing that to playRound function
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        const humanChoice = e.target.innerHTML
+        const humanChoice = e.target.id
         console.log(playRound(humanChoice))
     });
 });
